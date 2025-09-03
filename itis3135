@@ -1,1 +1,9 @@
-<p>Hello</p>
+<!DOCTYPE html>
+<html>
+    <!-- I deleted the other line and added this thing below-->
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    </head>
+    <body>What's up</body>
+</html>
