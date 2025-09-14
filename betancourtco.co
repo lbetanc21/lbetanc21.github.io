@@ -73,15 +73,14 @@
   </main>
 
   <footer>
-    <p>© 2025 Betancourt & Co. — Simple sites that ship.</p>
-    <p>
-      <small>
-        Validation: 
-        <a href="https://validator.w3.org/" target="_blank" rel="noopener">HTML</a> ·
-        <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">CSS</a>
-      </small>
-    </p>
-    <!-- NOTE: This firm page should NOT include the usual "Designed by ..." line. Other pages should link back to this folder. -->
+  <p>© 2025 Betancourt & Co. – Simple sites that ship.</p>
+  <p>
+    <small>
+      Validation:
+      <a href="https://validator.w3.org/" target="_blank" rel="noopener">HTML</a> ·
+      <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">CSS</a>
+    </small>
+  </p>
   </footer>
 </body>
 </html>
