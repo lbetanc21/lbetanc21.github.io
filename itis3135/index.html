@@ -86,22 +86,34 @@
 
     <footer>
         <nav>
-            <a href="https://webpages.uncc.edu/lbetanc2/" target="_blank">Charlotte Webpages</a>
-            <a href="https://github.com/lbetanc21" target="_blank">GitHub</a>
-            <a href="https://github.com/lbetanc21/lbetanc21.github.io" target="_blank">GitHub.io</a>
-            <a href="https://www.freecodecamp.org/lbetanc2" target="_blank">freeCodeCamp</a>
-            <a href="https://www.codecademy.com/profiles/mega3362779902" target="_blank">Codecademy</a>
-            <a href="www.linkedin.com/in/luis-betancourt-68b725328" target="_blank">LinkedIn</a>
+            <a href="https://webpages.uncc.edu/lbetanc2/itis3135/" target="_blank">
+              https://webpages.uncc.edu/lbetanc2/itis3135/
+            </a>
+            <a href="https://lbetanc21.github.io/itis3135/" target="_blank">
+              https://lbetanc21.github.io/itis3135/
+            </a>
+            <br>
+            <a id="validation_link_html" target="_blank">Check HTML Validation</a> |
+            <a id="validation_link_css" target="_blank">Check CSS Validation</a>
         </nav>
         <p>Page Built © 2025 Luis Betancourt</p>
+        <p>
+            Page designed by 
+            <a href="https://betancourtco.co/" target="_blank">Betancourt &amp; Co.</a>
+        </p>
     </footer>
-    <footer>
-  <p>
-    Page designed by 
-    <a href="betancourtco.co/">Betancourt &amp; Co.</a>
-  </p>
-</footer>
 
+    <script>
+      // Populate validator links dynamically
+      document.getElementById("validation_link_html").setAttribute(
+        "href",
+        "https://validator.w3.org/check?uri=" + location.href
+      );
+      document.getElementById("validation_link_css").setAttribute(
+        "href",
+        "https://jigsaw.w3.org/css-validator/validator?uri=" + location.href
+      );
+    </script>
 
 </body>
 </html>
