@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Betancourt | ITIS3135 | Website Evaluations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #222;
+        }
+        header {
+            background-color: #00467f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        section {
+            background: #fff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        section h3 a {
+            color: #00467f;
+            text-decoration: none;
+        }
+        section h3 a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            text-align: left;
+        }
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        footer nav a {
+            color: #66ccff;
+            margin: 0 8px;
+            text-decoration: none;
+        }
+        footer nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Luis Betancourt | ITIS3135 | Website Evaluations</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="website_evaluations.html">Website Evaluations</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Website Evaluations</h2>
+        <p>Using the CRAP design principles (Contrast, Repetition, Alignment, Proximity) to evaluate two sites.</p>
+
+        <section>
+            <h3><a href="https://design-system.service.gov.uk/" target="_blank">GOV.UK Design System</a></h3>
+            <p>This government design system site is an example of clarity and consistency.</p>
+            <ul>
+                <li><strong>Contrast:</strong> Clear type hierarchy, bold headings, minimal purposeful colors.</li>
+                <li><strong>Repetition:</strong> Layout patterns, navigation, and buttons stay consistent.</li>
+                <li><strong>Alignment:</strong> Strong grid and left-aligned content aid scanning.</li>
+                <li><strong>Proximity:</strong> Related content is grouped, sections separated with whitespace.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3><a href="https://www.lingscars.com/" target="_blank">Ling’s Cars</a></h3>
+            <p>This car-leasing site is infamous for chaotic visuals and poor hierarchy.</p>
+            <ul>
+                <li><strong>Contrast:</strong> Too many clashing colors and animations competing for attention.</li>
+                <li><strong>Repetition:</strong> Inconsistent patterns and abrupt style changes.</li>
+                <li><strong>Alignment:</strong> Weak structure; floating elements break scanning flow.</li>
+                <li><strong>Proximity:</strong> Items are crowded together, grouping is unclear.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="https://webpages.uncc.edu/lbetanc2/itis3135/" target="_blank">UNCC Hosting</a> |
+            <a href="https://lbetanc21.github.io/itis3135/" target="_blank">GitHub Pages Hosting</a>
+            <br>
+            <a id="validation_link_html" target="_blank">Check HTML Validation</a> |
+            <a id="validation_link_css" target="_blank">Check CSS Validation</a>
+        </nav>
+        <p>Page Built © 2025 Luis Betancourt</p>
+        <p>
+            Page designed by 
+            <a href="https://betancourtco.co/" target="_blank">Betancourt &amp; Co.</a>
+        </p>
+    </footer>
+
+    <script>
+      // Populate validator links dynamically
+      document.getElementById("validation_link_html").setAttribute(
+        "href",
+        "https://validator.w3.org/check?uri=" + location.href
+      );
+      document.getElementById("validation_link_css").setAttribute(
+        "href",
+        "https://jigsaw.w3.org/css-validator/validator?uri=" + location.href
+      );
+    </script>
+
+</body>
+</html>
