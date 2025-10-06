@@ -64,6 +64,28 @@
         footer nav a:hover {
             text-decoration: underline;
         }
+        main {
+          max-width: 1200px;      
+          width: 90%;             
+          margin: 0 auto;         
+        }
+
+        /* Tablet view (medium screens) */
+        @media screen and (max-width: 1024px) {
+          main {
+            max-width: 900px;     
+            width: 95%;           
+          }
+        }
+
+        /* Mobile view (small screens) */
+        @media screen and (max-width: 768px) {
+          main {
+            max-width: 100%;      
+            width: 98%;           
+            padding: 15px;        
+          }
+        }
     </style>
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 </head>
