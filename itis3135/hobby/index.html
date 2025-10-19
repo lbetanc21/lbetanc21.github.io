@@ -47,6 +47,11 @@
     .locations th,.locations td{padding:10px 12px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08);}
     .locations thead th{background:rgba(255,255,255,.06); font-weight:700;}
     .locations tr:hover{background:rgba(255,255,255,.04);}
+    /* How section */
+    #how ol{margin:0 0 16px 20px}
+    #how .gear{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px 14px;margin-top:8px}
+    #how .gear label{background:rgba(255,255,255,.06);padding:10px 12px;border-radius:10px}
+    #how .gear input{margin-right:8px}
   </style>
 
   <script>
@@ -226,21 +231,33 @@
 
     <!-- HOW -->
     <section id="how">
-      <h2>How</h2>
-      <ol>
-        <li>Plan and train</li><li>Gear and systems</li><li>Acclimatize</li><li>Climb</li><li>Descend</li>
-      </ol>
-      <figure>
-        <img src="images/ropework.jpg" alt="Figure-eight knot and belay device" width="900" height="540" />
-        <figcaption>Foundational rope skills.</figcaption>
-        <p class="credit">Image generated with AI; prompts not retained.</p>
-      </figure>
-      <form aria-label="Gear checklist">
-        <label><input type="checkbox"> Helmet</label>
-        <label><input type="checkbox"> Crampons</label>
-        <label><input type="checkbox"> Ice axe</label>
-      </form>
-    </section>
+  <h2>How</h2>
+
+  <ol>
+    <li>Plan: research route, weather, avalanche forecast.</li>
+    <li>Train: cardio + strength; practice movement on rock/snow.</li>
+    <li>Gear: pack essentials and test systems before the trip.</li>
+    <li>Acclimatize: gain altitude gradually; hydrate and rest.</li>
+    <li>Climb: start early, manage pace, protect the descent.</li>
+    <li>Descend: turn-around times, retreat plans, regroup.</li>
+  </ol>
+
+  <figure>
+    <img src="how.png" alt="Ropework: figure-eight knot and belay device" width="900" height="540">
+    <figcaption>Core systems: knots, belay, self-arrest, and efficient movement.</figcaption>
+    <p class="credit"><em>Image generated with AI; prompts not retained.</em></p>
+  </figure>
+
+  <form aria-label="Gear checklist" class="gear">
+    <label><input type="checkbox"> Helmet</label>
+    <label><input type="checkbox"> Harness</label>
+    <label><input type="checkbox"> Rope</label>
+    <label><input type="checkbox"> Crampons</label>
+    <label><input type="checkbox"> Ice axe</label>
+    <label><input type="checkbox"> Headlamp + batteries</label>
+  </form>
+</section>
+
 
     <!-- WHY -->
     <section id="why">
