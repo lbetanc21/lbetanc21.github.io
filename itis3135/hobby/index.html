@@ -36,7 +36,13 @@
     header nav a:focus{
     outline: 3px solid var(--accent);
     outline-offset: 2px;
-}
+    }
+    /* Seasons table */
+    table.seasons{width:100%; border-collapse:collapse; margin:12px 0 18px}
+    .seasons th,.seasons td{padding:10px 12px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
+    .seasons thead th{background:rgba(255,255,255,.06); font-weight:700}
+    .seasons tr:hover{background:rgba(255,255,255,.04)}
+
 
   </style>
 
@@ -117,22 +123,48 @@
 
     <!-- WHEN -->
     <section id="when">
-      <h2>When</h2>
-      <p>Seasons, daylight, avalanche considerations.</p>
-      <table>
-        <thead><tr><th>Season</th><th>Pros</th><th>Watchouts</th></tr></thead>
-        <tbody>
-          <tr><td>Spring</td><td>Firm snow, stable mornings</td><td>Wet slides PM</td></tr>
-          <tr><td>Summer</td><td>Dry rock, long days</td><td>Thunderstorms</td></tr>
-          <tr><td>Winter</td><td>Quiet mountains</td><td>Avalanche danger</td></tr>
+  <h2>When</h2>
+
+  <p>
+    Timing matters: snowpack, avalanche risk, thunderstorms, and daylight all change with the season.
+    Choose objectives that match conditions and your experience.
+  </p>
+
+  <table class="seasons">
+    <thead>
+      <tr><th>Season</th><th>Pros</th><th>Watch-outs</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Spring</td>
+        <td>Firm morning snow; good cramponing</td>
+        <td>Wet slides later in day; weakening bridges</td>
+      </tr>
+      <tr>
+        <td>Summer</td>
+        <td>Long days; dry rock</td>
+        <td>PM thunderstorms; rockfall on melting routes</td>
+      </tr>
+      <tr>
+        <td>Fall</td>
+        <td>Cool temps; early ice</td>
+        <td>Shorter days; thin snow/ice</td>
+      </tr>
+      <tr>
+        <td>Winter</td>
+        <td>Quiet mountains; snow/ice lines</td>
+        <td>Avalanche danger; severe cold; very short days</td>
+      </tr>
         </tbody>
       </table>
+
       <figure>
-        <img src="images/seasons.jpg" alt="Seasonal conditions collage" width="900" height="540" />
-        <figcaption>Conditions change by season and altitude.</figcaption>
-        <p class="credit">Image generated with AI; prompts not retained.</p>
+        <img src="seasons.jpg" alt="Seasonal mountain conditions" width="900" height="540">
+        <figcaption>Conditions shift with season and altitude—plan start times accordingly.</figcaption>
+        <p class="credit"><em>Image generated with AI; prompts not retained.</em></p>
       </figure>
     </section>
+
 
     <!-- WHERE -->
     <section id="where">
