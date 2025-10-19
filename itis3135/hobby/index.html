@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mountaineering | Hobby</title>
+
+  <!-- Embedded stylesheet (required by rubric) -->
+  <style>
+    :root{
+      --bg:#0e1a24; --card:#152331; --ink:#eef6ff; --muted:#a7c4dd; --accent:#79c2ff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    header,footer{background:var(--card);padding:18px}
+    main{max-width:1000px;margin:auto;padding:18px}
+    h1,h2{margin:0 0 12px}
+    nav a{color:var(--ink);text-decoration:none;padding:8px 10px;display:inline-block;border-radius:10px}
+    nav a + span{margin:0 4px} /* divider spacing */
+    nav a:hover{background:rgba(255,255,255,.08)}
+    /* single-page sections */
+    section{display:none}
+    section.active{display:block}
+    figure{margin:0 0 14px}
+    figcaption{color:var(--muted);font-size:.95rem}
+    .credit{font-style:italic;color:var(--muted)}
+    /* buttons/links accessibility */
+    a:focus{outline:3px solid var(--accent);outline-offset:2px}
+  </style>
+
+  <script>
+    // Tiny show/hide to make it "multi-page"
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = [...document.querySelectorAll('main section')];
+      function show(id){
+        sections.forEach(s => s.classList.toggle('active', s.id===id));
+        // update aria-current on nav
+        document.querySelectorAll('header nav a').forEach(a=>{
+          a.setAttribute('aria-current', a.dataset.target===id ? 'page' : 'false');
+        });
+      }
+      document.querySelectorAll('header nav a').forEach(a=>{
+        a.addEventListener('click', (e)=>{ e.preventDefault(); show(a.dataset.target); history.replaceState(null,'',`#${a.dataset.target}`); });
+      });
+      // default = What
+      const initial = location.hash?.slice(1) || 'what';
+      show(initial);
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Mountaineering</h1>
+    <nav aria-label="Hobby sections">
+      <a href="#what"  data-target="what">What</a><span>⛰️</span>
+      <a href="#who"   data-target="who">Who</a><span>⛰️</span>
+      <a href="#when"  data-target="when">When</a><span>⛰️</span>
+      <a href="#where" data-target="where">Where</a><span>⛰️</span>
+      <a href="#how"   data-target="how">How</a><span>⛰️</span>
+      <a href="#why"   data-target="why">Why</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- WHAT (default visible) -->
+    <section id="what" class="active">
+      <h2>What</h2>
+      <p>Brief intro to mountaineering and safety-first mindset.</p>
+      <figure>
+        <img src="images/hero.jpg" alt="Alpine ridge at sunrise" width="900" height="540" />
+        <figcaption>Classic alpine objective at dawn.</figcaption>
+        <p class="credit">Image generated with AI; prompts not retained.</p>
+      </figure>
+      <ul>
+        <li>Alpine style vs. expedition style</li>
+        <li>Core skills: navigation, ropework, self-arrest</li>
+        <li>Risk management and weather</li>
+      </ul>
+    </section>
+
+    <!-- WHO -->
+    <section id="who">
+      <h2>Who</h2>
+      <p>About you / community / mentors.</p>
+      <figure>
+        <img src="images/team.jpg" alt="Rope team crossing a glacier" width="900" height="540" />
+        <figcaption>Rope teams manage crevasse risk together.</figcaption>
+        <p class="credit">Image generated with AI; prompts not retained.</p>
+      </figure>
+      <form aria-label="Experience survey">
+        <label>Experience level:
+          <select>
+            <option>New to hiking</option><option>Scrambling</option>
+            <option>Glacier travel</option><option>Technical alpine</option>
+          </select>
+        </label>
+      </form>
+    </section>
+
+    <!-- WHEN -->
+    <section id="when">
+      <h2>When</h2>
+      <p>Seasons, daylight, avalanche considerations.</p>
+      <table>
+        <thead><tr><th>Season</th><th>Pros</th><th>Watchouts</th></tr></thead>
+        <tbody>
+          <tr><td>Spring</td><td>Firm snow, stable mornings</td><td>Wet slides PM</td></tr>
+          <tr><td>Summer</td><td>Dry rock, long days</td><td>Thunderstorms</td></tr>
+          <tr><td>Winter</td><td>Quiet mountains</td><td>Avalanche danger</td></tr>
+        </tbody>
+      </table>
+      <figure>
+        <img src="images/seasons.jpg" alt="Seasonal conditions collage" width="900" height="540" />
+        <figcaption>Conditions change by season and altitude.</figcaption>
+        <p class="credit">Image generated with AI; prompts not retained.</p>
+      </figure>
+    </section>
+
+    <!-- WHERE -->
+    <section id="where">
+      <h2>Where</h2>
+      <p>Regions and classic routes.</p>
+      <table>
+        <thead><tr><th>Region</th><th>Classic Route</th><th>Grade</th><th>Permits</th></tr></thead>
+        <tbody>
+          <tr><td>Pacific NW</td><td>Mount Baker – Coleman-Deming</td><td>PD</td><td>Yes</td></tr>
+          <tr><td>Colorado</td><td>Longs Peak – Keyhole</td><td>Class 3</td><td>Yes</td></tr>
+        </tbody>
+      </table>
+      <figure>
+        <img src="images/map.jpg" alt="Map with marked alpine routes" width="900" height="540" />
+        <figcaption>Choosing objectives by season and skill.</figcaption>
+        <p class="credit">Image generated with AI; prompts not retained.</p>
+      </figure>
+    </section>
+
+    <!-- HOW -->
+    <section id="how">
+      <h2>How</h2>
+      <ol>
+        <li>Plan and train</li><li>Gear and systems</li><li>Acclimatize</li><li>Climb</li><li>Descend</li>
+      </ol>
+      <figure>
+        <img src="images/ropework.jpg" alt="Figure-eight knot and belay device" width="900" height="540" />
+        <figcaption>Foundational rope skills.</figcaption>
+        <p class="credit">Image generated with AI; prompts not retained.</p>
+      </figure>
+      <form aria-label="Gear checklist">
+        <label><input type="checkbox"> Helmet</label>
+        <label><input type="checkbox"> Crampons</label>
+        <label><input type="checkbox"> Ice axe</label>
+      </form>
+    </section>
+
+    <!-- WHY -->
+    <section id="why">
+      <h2>Why</h2>
+      <p>Challenge, beauty, partnership, stewardship.</p>
+      <ul>
+        <li>Leave No Trace in alpine zones</li>
+        <li>Respect weather and wildlife</li>
+        <li>Community and mentorship</li>
+      </ul>
+      <figure>
+        <img src="images/summit.jpg" alt="Summit view above the clouds" width="900" height="540" />
+        <figcaption>Perspective from the high country.</figcaption>
+        <p class="credit">Image generated with AI; prompts not retained.</p>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <p>Designed by <a href="../betancourtco.co/index.html">Betancourt &amp; Co.</a></p>
+    <nav aria-label="Validation">
+      <a href="https://validator.w3.org/nu/?doc=https://YOUR_URL/itis3135/hobby/index.html" target="_blank">HTML</a> |
+      <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://YOUR_URL/itis3135/hobby/index.html" target="_blank">CSS</a> |
+      <a href="https://wave.webaim.org/report#/%20https://YOUR_URL/itis3135/hobby/index.html" target="_blank">Accessibility</a>
+    </nav>
+  </footer>
+</body>
+</html>
