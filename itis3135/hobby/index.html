@@ -42,8 +42,11 @@
     .seasons th,.seasons td{padding:10px 12px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
     .seasons thead th{background:rgba(255,255,255,.06); font-weight:700}
     .seasons tr:hover{background:rgba(255,255,255,.04)}
-
-
+    /* Locations table */
+    table.locations{width:100%; border-collapse:collapse; margin:12px 0 18px;}
+    .locations th,.locations td{padding:10px 12px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08);}
+    .locations thead th{background:rgba(255,255,255,.06); font-weight:700;}
+    .locations tr:hover{background:rgba(255,255,255,.04);}
   </style>
 
   <script>
@@ -168,21 +171,58 @@
 
     <!-- WHERE -->
     <section id="where">
-      <h2>Where</h2>
-      <p>Regions and classic routes.</p>
-      <table>
-        <thead><tr><th>Region</th><th>Classic Route</th><th>Grade</th><th>Permits</th></tr></thead>
-        <tbody>
-          <tr><td>Pacific NW</td><td>Mount Baker – Coleman-Deming</td><td>PD</td><td>Yes</td></tr>
-          <tr><td>Colorado</td><td>Longs Peak – Keyhole</td><td>Class 3</td><td>Yes</td></tr>
-        </tbody>
-      </table>
-      <figure>
-        <img src="images/map.jpg" alt="Map with marked alpine routes" width="900" height="540" />
-        <figcaption>Choosing objectives by season and skill.</figcaption>
-        <p class="credit">Image generated with AI; prompts not retained.</p>
-      </figure>
-    </section>
+  <h2>Where</h2>
+
+  <p>
+    Some of the best mountaineering destinations stretch across every continent—from icy volcanoes to rugged alpine ridges.
+    These classic routes offer challenge, beauty, and adventure for climbers of every level.
+  </p>
+
+  <table class="locations">
+    <thead>
+      <tr><th>Region</th><th>Classic Route</th><th>Difficulty</th><th>Permit Needed</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pacific Northwest (USA)</td>
+        <td>Mount Baker – Coleman–Deming Route</td>
+        <td>Moderate (Glacier Travel)</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Colorado Rockies (USA)</td>
+        <td>Longs Peak – Keyhole Route</td>
+        <td>Intermediate (Class 3 Scramble)</td>
+        <td>Yes (Summer Only)</td>
+      </tr>
+      <tr>
+        <td>Andes (Peru)</td>
+        <td>Alpamayo – Southwest Face</td>
+        <td>Advanced (Ice Climb)</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Alps (France/Italy)</td>
+        <td>Mont Blanc – Gouter Route</td>
+        <td>Intermediate (Glacier Climb)</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Himalayas (Nepal)</td>
+        <td>Island Peak – Normal Route</td>
+        <td>Challenging (High Altitude)</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <img src="where.png" alt="World map showing famous mountain ranges" width="900" height="540">
+    <figcaption>Major mountaineering regions worldwide, from the Cascades to the Himalayas.</figcaption>
+    <p class="credit"><em>Image generated with AI; prompts not retained.</em></p>
+  </figure>
+</section>
+
 
     <!-- HOW -->
     <section id="how">
