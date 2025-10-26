@@ -370,27 +370,62 @@
     </footer>
 
     <script>
-      document.getElementById("validation_link_html").setAttribute(
-        "href",
-        "https://validator.w3.org/check?uri=" + location.href
-      );
-      document.getElementById("validation_link_css").setAttribute(
-        "href",
-        "https://jigsaw.w3.org/css-validator/validator?uri=" + location.href
-      );
+        document.getElementById("validation_link_html").setAttribute(
+            "href",
+            "https://validator.w3.org/check?uri=" + location.href
+        );
+        document.getElementById("validation_link_css").setAttribute(
+            "href",
+            "https://jigsaw.w3.org/css-validator/validator?uri=" + location.href
+        );
 
-      document.getElementById("clear_button").addEventListener("click", function () {
-        const inputs = document.querySelectorAll("#form input");
+        document.getElementById("clear_button").addEventListener("click", function () {
+        const inputs = document.querySelectorAll("#form input, #form textarea");
         inputs.forEach(input => {
             input.value = "";
         });
-      });
+    });
 
-      const formElement = document.getElementById("form");
-      formElement.addEventListener("submit", (e) => {
+    const formElement = document.getElementById("form");
+    formElement.addEventListener("submit", (e) => {
         e.preventDefault();
-      });
+    });
+
+    const coursesSection = document.getElementById("courses_section");
+    const addCourseBtn = document.getElementById("add_course_btn");
+
+    addCourseBtn.addEventListener("click", () => {
+        const courseCount = coursesSection.querySelectorAll(".course-entry").length;
+        const newCourseNum = courseCount + 1;
+
+        const newCourseDiv = document.createElement("div");
+        newCourseDiv.classList.add("course-entry");
+        newCourseDiv.innerHTML = `
+            <hr>
+            <label for="course_dept_${newCourseNum}">Department *</label>
+            <input type="text" id="course_dept_${newCourseNum}" name="course_dept[]" required placeholder="e.g., ITIS">
+
+            <label for="course_num_${newCourseNum}">Course Number *</label>
+            <input type="text" id="course_num_${newCourseNum}" name="course_num[]" required placeholder="e.g., 3135">
+
+            <label for="course_name_${newCourseNum}">Course Name *</label>
+            <input type="text" id="course_name_${newCourseNum}" name="course_name[]" required placeholder="e.g., Web App Development">
+
+            <label for="course_reason_${newCourseNum}">Reason *</label>
+            <input type="text" id="course_reason_${newCourseNum}" name="course_reason[]" required placeholder="Why are you taking this course?">
+
+            <button type="button" class="delete_course_btn">Delete Course</button>
+        `;
+
+        coursesSection.insertBefore(newCourseDiv, addCourseBtn.parentElement);
+
+        const deleteBtn = newCourseDiv.querySelector(".delete_course_btn");
+        deleteBtn.addEventListener("click", () => {
+            newCourseDiv.remove();
+        });
+    });
     </script>
+
 
 </body>
 </html>
