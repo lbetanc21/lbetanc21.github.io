@@ -172,16 +172,16 @@
                 <legend>Your Basic Info</legend>
 
                 <label for="first_name">First Name *</label>
-                <input type="text" id="first_name" name="first_name" required placeholder="First Name" value="First">
+                <input type="text" id="first_name" name="first_name" required placeholder="First Name" value="Luis">
 
                 <label for="middle_name">Middle Name / Initial (optional)</label>
-                <input type="text" id="middle_name" name="middle_name" placeholder="Middle">
+                <input type="text" id="middle_name" name="middle_name" placeholder="M.">
 
                 <label for="preferred_name">Nickname / Preferred Name (optional)</label>
                 <input type="text" id="preferred_name" name="preferred_name" placeholder="What should we call you?">
 
                 <label for="last_name">Last Name *</label>
-                <input type="text" id="last_name" name="last_name" required placeholder="Last Name" value="Last">
+                <input type="text" id="last_name" name="last_name" required placeholder="Last Name" value="Betancourt">
             </fieldset>
 
             <fieldset>
@@ -202,7 +202,7 @@
                     id="ack_date"
                     name="ack_date"
                     required
-                    value="Type today's date here"
+                    value="10-26-2025"
                 />
             </fieldset>
 
@@ -216,7 +216,7 @@
                     name="mascot_adj" 
                     required 
                     placeholder="e.g., Mighty" 
-                    value="Type here"
+                    value="Luminous"
             >
 
                 <label for="mascot_animal">Mascot Animal *</label>
@@ -226,7 +226,7 @@
                     name="mascot_animal" 
                     required 
                     placeholder="e.g., Bison" 
-                    value="Type here"
+                    value="Bison"
             >
 
                 <label for="mascot_divider">Divider Symbol *</label>
@@ -236,7 +236,7 @@
                     name="mascot_divider" 
                     required 
                     placeholder="e.g., |, ~, ♥" 
-                    value="Type here"
+                    value="|"
                     maxlength="3"
             >
             </fieldset>
@@ -262,7 +262,7 @@
                     id="default_image" 
                     name="default_image" 
                     readonly
-                    value="type here"
+                    value="images/mountain.png"
             >
 
                 <label for="img_caption">Image Caption *</label>
@@ -272,10 +272,46 @@
                     name="img_caption" 
                     required 
                     placeholder="Describe the image briefly"
-                    value="type here"
+                    value="Luminous Bison standing tall in the mountains."
             >
             </fieldset>
 
+            <fieldset>
+                <legend>Personal Statement & Main Bullets</legend>
+
+                <label for="personal_statement">Personal Statement *</label>
+                <textarea 
+                    id="personal_statement" 
+                    name="personal_statement" 
+                    required 
+                    placeholder="Write a brief personal introduction here"
+                    rows="4"
+                >I'm a passionate and creative designer and developer who enjoys creating visually somewhat appealing and somewhat functional experiences. I enjoy blending technology, creativity, and practicality in everything I work on.</textarea>
+
+                <p><strong>Main Bullets (7 required):</strong></p>
+
+                <label for="bullet1">1. Personal Background *</label>
+                <input type="text" id="bullet1" name="bullet1" required value="Born in Dominican Republic and raised pretty much in North Carolina, I enjoy the outdoors and spending time with friends.">
+
+                <label for="bullet2">2. Academic Background *</label>
+                <input type="text" id="bullet2" name="bullet2" required value="Currently pursuing a Computer Science major at UNC Charlotte.">
+
+                <label for="bullet3">3. Professional Background *</label>
+                <input type="text" id="bullet3" name="bullet3" required value="Experience in customer service, finance, and web development projects.">
+
+                <label for="bullet4">4. Skills & Strengths *</label>
+                <input type="text" id="bullet4" name="bullet4" required value="Strong communication, teamwork, and creative problem-solving abilities.">
+
+                <label for="bullet5">5. Interests & Hobbies *</label>
+                <input type="text" id="bullet5" name="bullet5" required value="Working out, making music, and exploring new design concepts.">
+
+                <label for="bullet6">6. Goals & Ambitions *</label>
+                <input type="text" id="bullet6" name="bullet6" required value="Aiming to build a career that combines technology, design, and leadership.">
+
+                <label for="bullet7">7. Fun Fact *</label>
+                <input type="text" id="bullet7" name="bullet7" required value="I to camp in the backcountry wilderness.">
+            </fieldset>
+    
 
             <div style="text-align:center; margin-top:20px;">
                 <button type="submit">Submit</button>
