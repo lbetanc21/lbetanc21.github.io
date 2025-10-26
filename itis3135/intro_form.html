@@ -311,6 +311,30 @@
                 <label for="bullet7">7. Fun Fact *</label>
                 <input type="text" id="bullet7" name="bullet7" required value="I love to camp in the backcountry wilderness.">
             </fieldset>
+
+            <fieldset id="courses_section">
+                <legend>Courses</legend>
+
+                <div class="course-entry">
+                    <label for="course_dept_1">Department *</label>
+                    <input type="text" id="course_dept_1" name="course_dept[]" required value="ITIS">
+
+                    <label for="course_num_1">Course Number *</label>
+                    <input type="text" id="course_num_1" name="course_num[]" required value="3135">
+
+                    <label for="course_name_1">Course Name *</label>
+                    <input type="text" id="course_name_1" name="course_name[]" required value="Web-Based Application Design and Development">
+
+                    <label for="course_reason_1">Reason *</label>
+                    <input type="text" id="course_reason_1" name="course_reason[]" required value="To strengthen my front-end development and web design skills.">
+                </div>
+
+  <!-- Buttons for adding/removing courses -->
+                <div style="margin-top:15px;">
+                    <button type="button" id="add_course_btn">Add Course</button>
+                </div>
+            </fieldset>
+
     
 
             <div style="text-align:center; margin-top:20px;">
