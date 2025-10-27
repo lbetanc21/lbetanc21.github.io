@@ -1,651 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction Form | ITIS3135 | Luis Betancourt</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #222;
-        }
-        header {
-            background-color: #00467f;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            margin: 10px 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 20px;
-            text-align: center;
-            max-width: 1200px;
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .button-link {
-            display: inline-block;
-            padding: 12px 20px;
-            margin-top: 15px;
-            background-color: #00467f;
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .button-link:hover {
-            background-color: #0066cc;
-        }
-
-        footer {
-            background-color: #222;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            margin-top: 30px;
-        }
-        footer nav a {
-            color: #66ccff;
-            margin: 0 8px;
-            text-decoration: none;
-        }
-        footer nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Tablet view (medium screens) */
-        @media screen and (max-width: 1024px) {
-          main {
-            max-width: 900px;
-            width: 95%;
-          }
-        }
-
-        /* Mobile view (small screens) */
-        @media screen and (max-width: 768px) {
-          main {
-            max-width: 100%;
-            width: 98%;
-            padding: 15px;
-          }
-        }
-
-        form {
-            text-align: left;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 800px;
-        }
-
-        form fieldset {
-            border: 1px solid #aaa;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-        form legend {
-            font-weight: bold;
-            color: #00467f;
-        }
-
-        form label {
-            display: block;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        form input,
-        form textarea {
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #888;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        #result[hidden] {
-            display: none;
-        }
-
-        #result {
-            text-align: left;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 800px;
-        }
-    </style>
-
-    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
-    <!-- we'll add <script src="scripts/introduction.js" defer></script> later -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction Form | Luis Betancourt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+    header {
+      background-color: #00467f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      margin: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+      text-align: left;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    fieldset {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: white;
+    }
+    legend {
+      font-weight: bold;
+      color: #00467f;
+    }
+    label {
+      display: block;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border: none;
+      background-color: #00467f;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #0066cc;
+    }
+    .delete_course_btn {
+      background-color: #c0392b;
+      color: white;
+      margin-top: 10px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .delete_course_btn:hover {
+      background-color: #e74c3c;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #66ccff;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <h1>Luis Betancourt | ITIS3135 | Introduction Form</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="website_evaluations.html">Website Evaluations</a>
+      <a href="fccfsjs_outline.html">FCC JS Outline</a>
+      <a href="hobby/">Hobby</a>
+      <a href="intro_form.html">Intro Form</a>
+    </nav>
+  </header>
 
-    <header>
-        <h1>Luis Betancourt | ITIS3135 | Introduction Form</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="#">About</a>
-            <a href="website_evaluations.html">Website Evaluations</a>
-            <a href="fccfsjs_outline.html">FCC JS Outline</a>
-            <a href="hobby/">Hobby</a>
-            <a href="intro_form.html">Intro Form</a>
-        </nav>
-    </header>
+  <main>
+    <h2>Introduction Form</h2>
+    <h3>Please submit the form below.</h3>
 
-    <main>
-        <h2>Introduction Form</h2>
-        <h3>Please submit the form below.</h3>
+    <form id="form">
+      <fieldset>
+        <legend>Basic Information</legend>
+        <label for="first_name">First Name *</label>
+        <input type="text" id="first_name" value="Luis" required />
+        <label for="middle_name">Middle Name (optional)</label>
+        <input type="text" id="middle_name" placeholder="Enter middle name" />
+        <label for="preferred_name">Preferred Name (optional)</label>
+        <input type="text" id="preferred_name" placeholder="Enter nickname" />
+        <label for="last_name">Last Name *</label>
+        <input type="text" id="last_name" value="Betancourt" required />
+      </fieldset>
 
-        <!-- FORM START -->
-        <form id="form">
-            
+      <fieldset>
+        <legend>Acknowledgment</legend>
+        <label for="ack_statement">Acknowledgment Statement *</label>
+        <textarea id="ack_statement" required rows="3">I understand this work is my own.</textarea>
+        <label for="ack_date">Acknowledgment Date *</label>
+        <input type="date" id="ack_date" required value="2025-10-26" />
+      </fieldset>
 
-            <fieldset>
-                <legend>Your Basic Info</legend>
+      <fieldset>
+        <legend>Mascot</legend>
+        <label for="mascot_adj">Mascot Adjective *</label>
+        <input id="mascot_adj" required value="Luminous" />
+        <label for="mascot_animal">Mascot Animal *</label>
+        <input id="mascot_animal" required value="Bison" />
+        <label for="mascot_divider">Divider *</label>
+        <input id="mascot_divider" required value="|" />
+      </fieldset>
 
-                <label for="first_name">First Name *</label>
-                <input type="text" id="first_name" name="first_name" required placeholder="First Name" value="Luis">
+      <fieldset>
+        <legend>Picture</legend>
+        <label for="profile_pic">Profile Picture *</label>
+        <input type="file" id="profile_pic" accept="image/*" />
+        <input type="hidden" id="default_image" value="images/default-profile.jpg" />
+        <label for="img_caption">Picture Caption *</label>
+        <input id="img_caption" required value="Luis Betancourt at UNC Charlotte" />
+      </fieldset>
 
-                <label for="middle_name">Middle Name / Initial (optional)</label>
-                <input type="text" id="middle_name" name="middle_name" placeholder="M.">
+      <fieldset>
+        <legend>Personal Statement</legend>
+        <textarea id="personal_statement" required rows="3">I’m passionate about technology and design, combining both in creative projects.</textarea>
+      </fieldset>
 
-                <label for="preferred_name">Nickname / Preferred Name (optional)</label>
-                <input type="text" id="preferred_name" name="preferred_name" placeholder="What should we call you?">
+      <fieldset>
+        <legend>Main Bullets</legend>
+        <label>Personal Background *</label>
+        <input id="bullet1" required value="Born and raised in Charlotte." />
+        <label>Academic Background *</label>
+        <input id="bullet2" required value="Studying Computer Science at UNC Charlotte." />
+        <label>Professional Background *</label>
+        <input id="bullet3" required value="Experience in customer service and tech support." />
+        <label>Skills & Strengths *</label>
+        <input id="bullet4" required value="Problem-solving, leadership, and creativity." />
+        <label>Interests & Hobbies *</label>
+        <input id="bullet5" required value="Music, working out, and web development." />
+        <label>Goals & Ambitions *</label>
+        <input id="bullet6" required value="Building a successful career and future family." />
+        <label>Fun Fact *</label>
+        <input id="bullet7" required value="I can cook a great breakfast sandwich." />
+      </fieldset>
 
-                <label for="last_name">Last Name *</label>
-                <input type="text" id="last_name" name="last_name" required placeholder="Last Name" value="Betancourt">
-            </fieldset>
+      <fieldset id="courses_section">
+        <legend>Courses</legend>
+        <div class="course-entry">
+          <label>Department *</label>
+          <input id="course_dept_1" required value="ITIS" />
+          <label>Course Number *</label>
+          <input id="course_num_1" required value="3135" />
+          <label>Course Name *</label>
+          <input id="course_name_1" required value="Web-Based App Design & Development" />
+          <label>Reason *</label>
+          <input id="course_reason_1" required value="To strengthen my front-end development skills." />
+        </div>
+        <button type="button" id="add_course_btn">Add Course</button>
+      </fieldset>
 
-            <fieldset>
-                <legend>Acknowledgment</legend>
+      <fieldset>
+        <legend>Favorite Quote</legend>
+        <label for="quote_text">Quote *</label>
+        <textarea id="quote_text" required rows="2">Discipline now is freedom later.</textarea>
+        <label for="quote_author">Quote Author *</label>
+        <input id="quote_author" required value="Unknown" />
+      </fieldset>
 
-                <label for="ack_statement">Acknowledgment Statement *</label>
-                <textarea
-                    id="ack_statement"
-                    name="ack_statement"
-                    required
-                    placeholder="Type your acknowledgment statement here"
-                    rows="3"
-                >I understand that this work is my own and I agree to follow all course policies.</textarea>
+      <fieldset>
+        <legend>Extras (Optional)</legend>
+        <label for="funny_thing">Funny thing (optional)</label>
+        <input id="funny_thing" value="I treat my code like it’s alive." />
+        <label for="share_thing">Something I’d like to share (optional)</label>
+        <textarea id="share_thing" rows="3">I love creating and improving digital experiences.</textarea>
+      </fieldset>
 
-                <label for="ack_date">Acknowledgment Date *</label>
-                <input
-                    type="date"
-                    id="ack_date"
-                    name="ack_date"
-                    required
-                    value="10-26-2025"
-                />
-            </fieldset>
+      <fieldset>
+        <legend>Links</legend>
+        <label>Link 1 *</label><input type="url" id="link1" required value="https://www.linkedin.com/" />
+        <label>Link 2 *</label><input type="url" id="link2" required value="https://github.com/" />
+        <label>Link 3 *</label><input type="url" id="link3" required value="https://webpages.charlotte.edu/" />
+        <label>Link 4 *</label><input type="url" id="link4" required value="https://lbetanc21.github.io/" />
+        <label>Link 5 *</label><input type="url" id="link5" required value="https://betancourtco.co/" />
+      </fieldset>
 
-            <fieldset>
-                <legend>Mascot Details</legend>
+      <div style="text-align:center; margin-top:20px;">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="button" id="clear_button">Clear</button>
+      </div>
+    </form>
 
-                <label for="mascot_adj">Mascot Adjective *</label>
-                <input 
-                    type="text" 
-                    id="mascot_adj" 
-                    name="mascot_adj" 
-                    required 
-                    placeholder="e.g., Mighty" 
-                    value="Luminous"
-            >
+    <section id="result" hidden></section>
+  </main>
 
-                <label for="mascot_animal">Mascot Animal *</label>
-                <input 
-                    type="text" 
-                    id="mascot_animal" 
-                    name="mascot_animal" 
-                    required 
-                    placeholder="e.g., Bison" 
-                    value="Bison"
-            >
+  <footer>
+    <nav>
+      <a href="https://webpages.uncc.edu/lbetanc2/itis3135/" target="_blank">https://webpages.uncc.edu/lbetanc2/itis3135/</a>
+      <a href="https://lbetanc21.github.io/itis3135/" target="_blank">https://lbetanc21.github.io/itis3135/</a>
+      <br />
+      <a id="validation_link_html" href="" target="_blank">Check HTML Validation</a> |
+      <a id="validation_link_css" href="" target="_blank">Check CSS Validation</a>
+    </nav>
+    <p>Page Built © 2025 Luis Betancourt</p>
+    <p>Page designed by <a href="https://betancourtco.co/" target="_blank">Betancourt &amp; Co.</a></p>
+  </footer>
 
-                <label for="mascot_divider">Divider Symbol *</label>
-                <input 
-                    type="text" 
-                    id="mascot_divider" 
-                    name="mascot_divider" 
-                    required 
-                    placeholder="e.g., |, ~, ♥" 
-                    value="|"
-                    maxlength="3"
-            >
-            </fieldset>
+  <script>
+    // validator links
+    document.getElementById("validation_link_html").setAttribute(
+      "href",
+      "https://validator.w3.org/check?uri=" + location.href
+    );
+    document.getElementById("validation_link_css").setAttribute(
+      "href",
+      "https://jigsaw.w3.org/css-validator/validator?uri=" + location.href
+    );
 
-            <fieldset>
-                <legend>Image & Caption</legend>
-
-                <label for="profile_pic">Profile Picture *</label>
-                <input 
-                    type="file" 
-                    id="profile_pic" 
-                    name="profile_pic" 
-                    accept="image/*"
-                    required
-            >
-                <p style="font-size:0.9em; color:#555;">
-                    (A default image will load if you don’t upload one)
-                </p>
-
-                <label for="default_image">Default Image Path</label>
-                <input 
-                    type="text" 
-                    id="default_image" 
-                    name="default_image" 
-                    readonly
-                    value="images/mountain.png"
-            >
-
-                <label for="img_caption">Image Caption *</label>
-                <input 
-                    type="text" 
-                    id="img_caption" 
-                    name="img_caption" 
-                    required 
-                    placeholder="Describe the image briefly"
-                    value="Luminous Bison standing tall in the mountains."
-            >
-            </fieldset>
-
-            <fieldset>
-                <legend>Personal Statement & Main Bullets</legend>
-
-                <label for="personal_statement">Personal Statement *</label>
-                <textarea 
-                    id="personal_statement" 
-                    name="personal_statement" 
-                    required 
-                    placeholder="Write a brief personal introduction here"
-                    rows="4"
-                >I'm a passionate and creative designer and developer who enjoys creating visually somewhat appealing and somewhat functional experiences. I enjoy blending technology, creativity, and practicality in everything I work on.</textarea>
-
-                <p><strong>Main Bullets (7 required):</strong></p>
-
-                <label for="bullet1">1. Personal Background *</label>
-                <input type="text" id="bullet1" name="bullet1" required value="Born in Dominican Republic and raised pretty much in North Carolina, I enjoy the outdoors and spending time with friends.">
-
-                <label for="bullet2">2. Academic Background *</label>
-                <input type="text" id="bullet2" name="bullet2" required value="Currently pursuing a Computer Science major at UNC Charlotte.">
-
-                <label for="bullet3">3. Professional Background *</label>
-                <input type="text" id="bullet3" name="bullet3" required value="Experience in customer service, finance, and web development projects.">
-
-                <label for="bullet4">4. Skills & Strengths *</label>
-                <input type="text" id="bullet4" name="bullet4" required value="Strong communication, teamwork, and creative problem-solving abilities.">
-
-                <label for="bullet5">5. Interests & Hobbies *</label>
-                <input type="text" id="bullet5" name="bullet5" required value="Working out, making music, and exploring new design concepts.">
-
-                <label for="bullet6">6. Goals & Ambitions *</label>
-                <input type="text" id="bullet6" name="bullet6" required value="Aiming to build a career that combines technology, design, and leadership.">
-
-                <label for="bullet7">7. Fun Fact *</label>
-                <input type="text" id="bullet7" name="bullet7" required value="I love to camp in the backcountry wilderness.">
-            </fieldset>
-
-            <fieldset id="courses_section">
-                <legend>Courses</legend>
-
-                <div class="course-entry">
-                    <label for="course_dept_1">Department *</label>
-                    <input type="text" id="course_dept_1" name="course_dept[]" required value="ITIS">
-
-                    <label for="course_num_1">Course Number *</label>
-                    <input type="text" id="course_num_1" name="course_num[]" required value="3135">
-
-                    <label for="course_name_1">Course Name *</label>
-                    <input type="text" id="course_name_1" name="course_name[]" required value="Web-Based Application Design and Development">
-
-                    <label for="course_reason_1">Reason *</label>
-                    <input type="text" id="course_reason_1" name="course_reason[]" required value="To strengthen my front-end development and web design skills.">
-                </div>
-
-  <!-- Buttons for adding/removing courses -->
-                <div style="margin-top:15px;">
-                    <button type="button" id="add_course_btn">Add Course</button>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <legend>Favorite Quote</legend>
-
-                <label for="quote_text">Quote *</label>
-                <textarea
-                    id="quote_text"
-                    name="quote_text"
-                    required
-                    rows="2"
-                    placeholder="Write a quote that represents you"
-                >Discipline now is freedom later.</textarea>
-
-                <label for="quote_author">Quote Author *</label>
-                <input
-                    type="text"
-                    id="quote_author"
-                    name="quote_author"
-                    required
-                    placeholder="Who said it?"
-                    value="Unknown"
-            >
-            </fieldset>
-
-            <fieldset>
-                <legend>Links</legend>
-
-                <label for="link1">Link 1 *</label>
-                <input
-                    type="url"
-                    id="link1"
-                    name="link1"
-                    required
-                    placeholder="https://..."
-                    value="https://www.linkedin.com/"
-            >
-
-                <label for="link2">Link 2 *</label>
-                <input
-                    type="url"
-                    id="link2"
-                    name="link2"
-                    required
-                    placeholder="https://..."
-                    value="https://github.com/"
-            >
-
-                <label for="link3">Link 3 *</label>
-                <input
-                    type="url"
-                    id="link3"
-                    name="link3"
-                    required
-                    placeholder="https://..."
-                    value="https://webpages.charlotte.edu/"
-            >
-
-                <label for="link4">Link 4 *</label>
-                <input
-                    type="url"
-                    id="link4"
-                    name="link4"
-                    required
-                    placeholder="https://..."
-                    value="https://lbetanc21.github.io/"
-            >
-
-                <label for="link5">Link 5 *</label>
-                <input
-                    type="url"
-                    id="link5"
-                    name="link5"
-                    required
-                    placeholder="https://..."
-                    value="https://betancourtco.co/"
-            >
-            </fieldset>
-
-
-
-            <div style="text-align:center; margin-top:20px;">
-                <button type="submit">Submit</button>
-                <button type="reset">Reset</button>
-                <button type="button" id="clear_button">Clear</button>
-            </div>
-        </form>
-        <!-- FORM END -->
-
-             generated intro page that should match your original intro layout) -->
-        <section id="result" hidden>
-        </section>
-    </main>
-
-    <footer>
-        <nav>
-            <a href="https://webpages.uncc.edu/lbetanc2/itis3135/" target="_blank">
-              https://webpages.uncc.edu/lbetanc2/itis3135/
-            </a>
-            <a href="https://lbetanc21.github.io/itis3135/" target="_blank">
-              https://lbetanc21.github.io/itis3135/
-            </a>
-            <br>
-            <a id="validation_link_html" target="_blank">Check HTML Validation</a> |
-            <a id="validation_link_css" target="_blank">Check CSS Validation</a>
-        </nav>
-        <p>Page Built © 2025 Luis Betancourt</p>
-        <p>
-            Page designed by 
-            <a href="https://betancourtco.co/" target="_blank">Betancourt &amp; Co.</a>
-        </p>
-    </footer>
-
-    <script>
-  document.getElementById("validation_link_html").setAttribute(
-    "href",
-    "https://validator.w3.org/check?uri=" + location.href
-  );
-  document.getElementById("validation_link_css").setAttribute(
-    "href",
-    "https://jigsaw.w3.org/css-validator/validator?uri=" + location.href
-  );
-
-  document.getElementById("clear_button").addEventListener("click", function () {
-    const inputs = document.querySelectorAll("#form input, #form textarea");
-    inputs.forEach((input) => {
-      input.value = "";
+    // clear button
+    document.getElementById("clear_button").addEventListener("click", () => {
+      document.querySelectorAll("#form input, #form textarea").forEach((i) => (i.value = ""));
     });
-  });
 
-  const formElement = document.getElementById("form");
-  formElement.addEventListener("submit", (e) => {
-    e.preventDefault();
-    buildIntroPageFromForm(); // runs when you hit Submit
-  });
-
-  const coursesSection = document.getElementById("courses_section");
-  const addCourseBtn = document.getElementById("add_course_btn");
-
-  addCourseBtn.addEventListener("click", () => {
-    const courseCount = coursesSection.querySelectorAll(".course-entry").length;
-    const newCourseNum = courseCount + 1;
-
-    const newCourseDiv = document.createElement("div");
-    newCourseDiv.classList.add("course-entry");
-    newCourseDiv.innerHTML = `
-      <hr>
-      <label for="course_dept_${newCourseNum}">Department *</label>
-      <input type="text" id="course_dept_${newCourseNum}" name="course_dept[]" required placeholder="e.g., ITIS">
-
-      <label for="course_num_${newCourseNum}">Course Number *</label>
-      <input type="text" id="course_num_${newCourseNum}" name="course_num[]" required placeholder="e.g., 3135">
-
-      <label for="course_name_${newCourseNum}">Course Name *</label>
-      <input type="text" id="course_name_${newCourseNum}" name="course_name[]" required placeholder="e.g., Web App Development">
-
-      <label for="course_reason_${newCourseNum}">Reason *</label>
-      <input type="text" id="course_reason_${newCourseNum}" name="course_reason[]" required placeholder="Why are you taking this course?">
-
-      <button type="button" class="delete_course_btn">Delete Course</button>
-    `;
-
-    coursesSection.insertBefore(newCourseDiv, addCourseBtn.parentElement);
-
-    const deleteBtn = newCourseDiv.querySelector(".delete_course_btn");
-    deleteBtn.addEventListener("click", () => {
-      newCourseDiv.remove();
+    // add/delete course
+    const coursesSection = document.getElementById("courses_section");
+    const addCourseBtn = document.getElementById("add_course_btn");
+    addCourseBtn.addEventListener("click", () => {
+      const count = coursesSection.querySelectorAll(".course-entry").length + 1;
+      const div = document.createElement("div");
+      div.classList.add("course-entry");
+      div.innerHTML = `
+        <hr>
+        <label>Department *</label>
+        <input id="course_dept_${count}" required placeholder="e.g., ITIS">
+        <label>Course Number *</label>
+        <input id="course_num_${count}" required placeholder="e.g., 3135">
+        <label>Course Name *</label>
+        <input id="course_name_${count}" required placeholder="e.g., Web App Development">
+        <label>Reason *</label>
+        <input id="course_reason_${count}" required placeholder="Why are you taking this?">
+        <button type="button" class="delete_course_btn">Delete Course</button>`;
+      coursesSection.insertBefore(div, addCourseBtn);
+      div.querySelector(".delete_course_btn").addEventListener("click", () => div.remove());
     });
-  });
 
-  function buildIntroPageFromForm() {
-    const firstName = document.getElementById("first_name").value.trim();
-    const middleName = document.getElementById("middle_name").value.trim();
-    const preferredName = document.getElementById("preferred_name").value.trim();
-    const lastName = document.getElementById("last_name").value.trim();
+    // build intro page
+    function buildIntroPageFromForm() {
+      const get = (id) => document.getElementById(id)?.value.trim() || "";
+      const first = get("first_name"), mid = get("middle_name"), pref = get("preferred_name"), last = get("last_name");
+      const ackStatement = get("ack_statement"), ackDate = get("ack_date");
+      const adj = get("mascot_adj"), animal = get("mascot_animal"), divider = get("mascot_divider");
+      const imgFile = document.getElementById("profile_pic").files[0];
+      let imgSrc = get("default_image");
+      if (imgFile) imgSrc = URL.createObjectURL(imgFile);
+      const imgCap = get("img_caption"), personal = get("personal_statement");
+      const bullets = [1,2,3,4,5,6,7].map(i=>get("bullet"+i));
+      const quote = get("quote_text"), quoteAuth = get("quote_author");
+      const funny = get("funny_thing"), share = get("share_thing");
+      const links = [get("link1"),get("link2"),get("link3"),get("link4"),get("link5")];
 
-    const ackStatement = document.getElementById("ack_statement").value.trim();
-    const ackDate = document.getElementById("ack_date").value;
+      const courseHTML = Array.from(document.querySelectorAll(".course-entry")).map(e=>{
+        const d=e.querySelector("[id^='course_dept_']").value.trim();
+        const n=e.querySelector("[id^='course_num_']").value.trim();
+        const nm=e.querySelector("[id^='course_name_']").value.trim();
+        const r=e.querySelector("[id^='course_reason_']").value.trim();
+        return `<li><strong>${d} ${n} - ${nm}:</strong> ${r}</li>`;
+      }).join("");
 
-    const mascotAdj = document.getElementById("mascot_adj").value.trim();
-    const mascotAnimal = document.getElementById("mascot_animal").value.trim();
-    const mascotDivider = document.getElementById("mascot_divider").value.trim();
+      const resultHTML = `
+        <article>
+          <h2>Introduction Form</h2>
+          <section><h3>${first} ${mid?mid+" ":""}${last}${pref?` (${pref})`:""}</h3>
+          <p><em>${adj} ${divider} ${animal}</em></p></section>
+          <figure style="max-width:300px;margin:auto;">
+            <img src="${imgSrc}" alt="Profile Image" style="width:100%;border-radius:8px;">
+            <figcaption>${imgCap}</figcaption></figure>
+          <section><h3>About Me</h3><p>${personal}</p></section>
+          <section><h3>Details</h3><ul>${bullets.map((b,i)=>`<li><strong>${["Personal","Academic","Professional","Skills","Interests","Goals","Fun"][i]}:</strong> ${b}</li>`).join("")}</ul></section>
+          <section><h3>Courses I'm Taking</h3><ul>${courseHTML}</ul></section>
+          <section><h3>Quote</h3><blockquote>“${quote}”</blockquote><p>- ${quoteAuth}</p></section>
+          <section><h3>Extras</h3>${funny?`<p><strong>Funny thing:</strong> ${funny}</p>`:""}${share?`<p><strong>Something I'd like to share:</strong> ${share}</p>`:""}</section>
+          <section><h3>Links</h3><ul>${links.map(l=>`<li><a href="${l}" target="_blank">${l}</a></li>`).join("")}</ul></section>
+          <section><h3>Acknowledgment</h3><p><strong>Statement:</strong> ${ackStatement}</p><p><strong>Date:</strong> ${ackDate}</p></section>
+          <div style="text-align:center;margin-top:20px;"><button id="start_over_btn" type="button">Start Over</button></div>
+        </article>`;
 
-    const profilePicInput = document.getElementById("profile_pic");
-    const defaultImgPath = document.getElementById("default_image").value.trim();
-    let imgSrc = defaultImgPath;
-    if (profilePicInput.files && profilePicInput.files[0]) {
-      imgSrc = URL.createObjectURL(profilePicInput.files[0]);
+      const result = document.getElementById("result");
+      result.innerHTML = resultHTML;
+      document.getElementById("form").hidden = true;
+      result.hidden = false;
+      document.getElementById("start_over_btn").onclick = ()=>{
+        result.hidden = true; document.getElementById("form").hidden = false; document.getElementById("form").reset();
+        Array.from(coursesSection.querySelectorAll(".course-entry")).slice(1).forEach(d=>d.remove());
+      };
     }
 
-    const imgCaption = document.getElementById("img_caption").value.trim();
-    const personalStatement = document.getElementById("personal_statement").value.trim();
-
-    const bullet1 = document.getElementById("bullet1").value.trim();
-    const bullet2 = document.getElementById("bullet2").value.trim();
-    const bullet3 = document.getElementById("bullet3").value.trim();
-    const bullet4 = document.getElementById("bullet4").value.trim();
-    const bullet5 = document.getElementById("bullet5").value.trim();
-    const bullet6 = document.getElementById("bullet6").value.trim();
-    const bullet7 = document.getElementById("bullet7").value.trim();
-
-    // gather all courses dynamically
-    const courseEntries = Array.from(document.querySelectorAll("#courses_section .course-entry"));
-    const coursesHTML = courseEntries.map((entry) => {
-      const dept = entry.querySelector("[id^='course_dept_']").value.trim();
-      const num = entry.querySelector("[id^='course_num_']").value.trim();
-      const name = entry.querySelector("[id^='course_name_']").value.trim();
-      const reason = entry.querySelector("[id^='course_reason_']").value.trim();
-      return `<li><strong>${dept} ${num} - ${name}:</strong> ${reason}</li>`;
-    }).join("");
-
-    const quoteText = document.getElementById("quote_text").value.trim();
-    const quoteAuthor = document.getElementById("quote_author").value.trim();
-
-    const funnyThing = document.getElementById("funny_thing").value.trim();
-    const shareThing = document.getElementById("share_thing").value.trim();
-
-    const link1 = document.getElementById("link1").value.trim();
-    const link2 = document.getElementById("link2").value.trim();
-    const link3 = document.getElementById("link3").value.trim();
-    const link4 = document.getElementById("link4").value.trim();
-    const link5 = document.getElementById("link5").value.trim();
-
-    const resultHTML = `
-      <article>
-        <h2>Introduction Form</h2>
-        <section>
-          <h3>${firstName} ${middleName ? middleName + " " : ""}${lastName}${preferredName ? ` (${preferredName})` : ""}</h3>
-          <p><em>${mascotAdj} ${mascotDivider} ${mascotAnimal}</em></p>
-        </section>
-
-        <figure style="max-width:300px; margin:auto;">
-          <img src="${imgSrc}" alt="Profile Image" style="width:100%; border-radius:8px;">
-          <figcaption>${imgCaption}</figcaption>
-        </figure>
-
-        <section><p>${personalStatement}</p></section>
-
-        <section>
-          <ul>
-            <li><strong>Personal Background:</strong> ${bullet1}</li>
-            <li><strong>Academic Background:</strong> ${bullet2}</li>
-            <li><strong>Professional Background:</strong> ${bullet3}</li>
-            <li><strong>Skills & Strengths:</strong> ${bullet4}</li>
-            <li><strong>Interests & Hobbies:</strong> ${bullet5}</li>
-            <li><strong>Goals & Ambitions:</strong> ${bullet6}</li>
-            <li><strong>Fun Fact:</strong> ${bullet7}</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Courses I'm Taking</h3>
-          <ul>${coursesHTML}</ul>
-        </section>
-
-        <section>
-          <blockquote style="font-style:italic; border-left:4px solid #00467f; padding-left:10px;">
-            “${quoteText}”
-          </blockquote>
-          <p>- ${quoteAuthor}</p>
-        </section>
-
-        <section>
-          ${funnyThing ? `<p><strong>Funny thing:</strong> ${funnyThing}</p>` : ""}
-          ${shareThing ? `<p><strong>Something I'd like to share:</strong> ${shareThing}</p>` : ""}
-        </section>
-
-        <section>
-          <h3>Links</h3>
-          <ul>
-            <li><a href="${link1}" target="_blank">${link1}</a></li>
-            <li><a href="${link2}" target="_blank">${link2}</a></li>
-            <li><a href="${link3}" target="_blank">${link3}</a></li>
-            <li><a href="${link4}" target="_blank">${link4}</a></li>
-            <li><a href="${link5}" target="_blank">${link5}</a></li>
-          </ul>
-        </section>
-
-        <section style="margin-top:20px; font-size:0.9em; color:#555;">
-          <p><strong>Acknowledgment:</strong> ${ackStatement}</p>
-          <p><strong>Date:</strong> ${ackDate}</p>
-        </section>
-
-        <div style="margin-top:30px; text-align:center;">
-          <button type="button" id="start_over_btn">Start Over</button>
-        </div>
-      </article>
-    `;
-
-    const resultSection = document.getElementById("result");
-    resultSection.innerHTML = resultHTML;
-
-    // hide form, show result
-    document.getElementById("form").setAttribute("hidden", "true");
-    resultSection.removeAttribute("hidden");
-
-    // ✅ Start Over button logic
-    const startOverBtn = document.getElementById("start_over_btn");
-    startOverBtn.addEventListener("click", () => {
-      resultSection.setAttribute("hidden", "true");
-      document.getElementById("form").removeAttribute("hidden");
-      formElement.reset();
-
-      // remove any extra dynamically added courses
-      const extraCourses = Array.from(
-        coursesSection.querySelectorAll(".course-entry")
-      ).slice(1);
-      extraCourses.forEach((div) => div.remove());
-    });
-  }
-</script>
-
-
-
+    // submit listener
+    const form = document.getElementById("form");
+    form.addEventListener("submit", (e) => { e.preventDefault(); buildIntroPageFromForm(); });
+  </script>
 </body>
 </html>
