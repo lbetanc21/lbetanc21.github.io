@@ -101,6 +101,9 @@
       text-decoration: underline;
     }
   </style>
+
+  <!-- 🔹 Highlight.js (for pretty JSON) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 </head>
 <body>
   <header>
@@ -225,10 +228,15 @@
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
         <button type="button" id="clear_button">Clear</button>
+        <!-- 🔹 NEW: Generate JSON button -->
+        <button type="button" id="btn-generate-json">Generate JSON</button>
       </div>
     </form>
 
     <section id="result" hidden></section>
+
+    <!-- 🔹 NEW: a dedicated section where JSON will render -->
+    <section id="json_section" hidden></section>
   </main>
 
   <footer>
@@ -243,6 +251,7 @@
     <p>Page designed by <a href="https://betancourtco.co/" target="_blank">Betancourt &amp; Co.</a></p>
   </footer>
 
+  <!-- Existing inline script (unchanged) -->
   <script>
     // validator links
     document.getElementById("validation_link_html").setAttribute(
@@ -336,5 +345,10 @@
     const form = document.getElementById("form");
     form.addEventListener("submit", (e) => { e.preventDefault(); buildIntroPageFromForm(); });
   </script>
+
+  <!-- 🔹 Highlight.js core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <!-- 🔹 NEW: Generate JSON logic -->
+  <script src="scripts/generate_json.js"></script>
 </body>
 </html>
