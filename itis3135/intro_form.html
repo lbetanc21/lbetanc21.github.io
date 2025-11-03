@@ -102,7 +102,7 @@
     }
   </style>
 
-  <!-- 🔹 Highlight.js (for pretty JSON) -->
+  <!-- 🔹 Highlight.js (for pretty JSON/HTML code blocks) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 </head>
 <body>
@@ -228,15 +228,19 @@
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
         <button type="button" id="clear_button">Clear</button>
-        <!-- 🔹 NEW: Generate JSON button -->
+        <!-- Existing JSON -->
         <button type="button" id="btn-generate-json">Generate JSON</button>
+        <!-- NEW: HTML button (to the right of JSON) -->
+        <button type="button" id="btn-generate-html">Generate HTML</button>
       </div>
     </form>
 
     <section id="result" hidden></section>
 
-    <!-- 🔹 NEW: a dedicated section where JSON will render -->
+    <!-- JSON output -->
     <section id="json_section" hidden></section>
+    <!-- NEW: HTML output -->
+    <section id="html_section" hidden></section>
   </main>
 
   <footer>
@@ -290,7 +294,7 @@
       div.querySelector(".delete_course_btn").addEventListener("click", () => div.remove());
     });
 
-    // build intro page
+    // build intro page (existing "rendered" version)
     function buildIntroPageFromForm() {
       const get = (id) => document.getElementById(id)?.value.trim() || "";
       const first = get("first_name"), mid = get("middle_name"), pref = get("preferred_name"), last = get("last_name");
@@ -348,7 +352,9 @@
 
   <!-- 🔹 Highlight.js core -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <!-- 🔹 NEW: Generate JSON logic -->
+  <!-- 🔹 Existing: Generate JSON logic -->
   <script src="scripts/generate_json.js"></script>
+  <!-- 🔹 NEW: Generate HTML logic -->
+  <script src="scripts/generate_html.js"></script>
 </body>
 </html>
