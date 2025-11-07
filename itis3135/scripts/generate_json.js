@@ -1,100 +1,134 @@
-// scripts/generate_json.js
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btn-generate-json");
-  const form = document.getElementById("form");
-  const jsonSection = document.getElementById("json_section");
-  const h2 = document.querySelector("main h2");
+// scripts/generate_json.js — tailored to Luis's intro_form.html
 
-  if (!btn) return;
+(function () {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const val = (id) => (document.getElementById(id)?.value || "").trim();
 
-  const get = (id) => document.getElementById(id)?.value.trim() || "";
-
-  function resolveImagePath() {
-    const fileInput = document.getElementById("profile_pic");
-    const def = document.getElementById("default_image");
-    if (fileInput && fileInput.files && fileInput.files.length > 0) {
-      // Use the chosen file's name under images/
-      return `images/${fileInput.files[0].name}`;
-    }
-    return def ? def.value : "";
+  function firstCharOrEmpty(s) {
+    return (s || "").trim().charAt(0) || "";
   }
 
-  function collectCourses() {
-    const rows = Array.from(document.querySelectorAll(".course-entry"));
-    return rows.map(row => {
-      const dept = row.querySelector("[id^='course_dept_']")?.value?.trim() || "";
-      const num  = row.querySelector("[id^='course_num_']")?.value?.trim() || "";
-      const name = row.querySelector("[id^='course_name_']")?.value?.trim() || "";
-      const reason = row.querySelector("[id^='course_reason_']")?.value?.trim() || "";
-      return { department: dept, number: num, name, reason };
-    });
+  // Read COURSES from .course-entry blocks using your id prefixes
+  function readCourses() {
+    return $$(".course-entry").map(block => {
+      const dept = block.querySelector("[id^='course_dept_']")?.value.trim() || "";
+      const number = block.querySelector("[id^='course_num_']")?.value.trim() || "";
+      const name = block.querySelector("[id^='course_name_']")?.value.trim() || "";
+      const reason = block.querySelector("[id^='course_reason_']")?.value.trim() || "";
+      return { department: dept, number, name, reason };
+    }).filter(c => c.department || c.number || c.name || c.reason);
   }
 
-  function collectLinks() {
-    // From fixed inputs link1..link5
+  // Read LINKS from #link1..#link5 and turn into {name, href}
+  function readLinks() {
     const ids = ["link1","link2","link3","link4","link5"];
-    return ids
-      .map((id, i) => {
-        const href = get(id);
-        if (!href) return null;
-        return { name: `Link ${i+1}`, href };
-      })
-      .filter(Boolean);
+    const out = [];
+    ids.forEach(id => {
+      const href = val(id);
+      if (!href) return;
+      try {
+        const u = new URL(href);
+        out.push({ name: u.hostname.replace(/^www\\./, ""), href });
+      } catch {
+        out.push({ name: href, href }); // fallback if not a valid URL
+      }
+    });
+    return out;
   }
 
-  function buildJsonString() {
+  function computeImagePath() {
+    // Prefer explicit default path string (required for JSON); ignore Blob URLs
+    const explicit = val("default_image");
+    if (explicit) return explicit;
+    // If a file was picked, you may want to still output a project-relative path string,
+    // but since we don't upload files here, leave it empty or keep the default.
+    return "";
+  }
+
+  function buildJSON() {
     const data = {
-      firstName: get("first_name"),
-      preferredName: get("preferred_name"),
-      middleInitial: get("middle_name"), // using middle_name since your form has full field
-      lastName: get("last_name"),
-      divider: get("mascot_divider"),
-      mascotAdjective: get("mascot_adj"),
-      mascotAnimal: get("mascot_animal"),
-      image: resolveImagePath(),
-      imageCaption: get("img_caption"),
-      personalStatement: get("personal_statement"),
-      personalBackground: get("bullet1"),
-      professionalBackground: get("bullet3"),
-      academicBackground: get("bullet2"),
-      subjectBackground: get("bullet4"), // mapped from Skills & Strengths per your form
-      primaryComputer: "", // not in form; leaving blank per spec
-      courses: collectCourses(),
-      links: collectLinks()
+      // === exact assignment keys ===
+      firstName: val("first_name"),
+      preferredName: val("preferred_name"),
+      middleInitial: (val("middleInitial") || firstCharOrEmpty(val("middle_name"))).toUpperCase(),
+      lastName: val("last_name"),
+      divider: val("mascot_divider"),
+      mascotAdjective: val("mascot_adj"),
+      mascotAnimal: val("mascot_animal"),
+      image: computeImagePath(), // e.g., "images/headshot.jpeg"
+      imageCaption: val("img_caption"),
+      personalStatement: val("personal_statement"),
+      personalBackground: val("bullet1"),
+      professionalBackground: val("bullet3"),
+      academicBackground: val("bullet2"),
+      subjectBackground: val("subjectBackground") || "",   // (optional) add this field in HTML to fill
+      primaryComputer: val("primaryComputer") || "",       // (optional) add this field in HTML to fill
+      courses: readCourses(),
+      links: readLinks()
     };
-    return JSON.stringify(data, null, 2); // pretty JSON, no trailing commas
+
+    return JSON.stringify(data, null, 2);
   }
 
-  function renderJson(jsonStr) {
-    // Hide other views
-    if (form) form.hidden = true;
-    const result = document.getElementById("result");
-    if (result) result.hidden = true;
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, ch => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[ch]));
+  }
 
-    // Update H2 text per assignment
+  function renderJSON() {
+    const jsonText = buildJSON();
+
+    const form = $("#form");
+    const result = $("#result") || (function(){
+      const sec = document.createElement("section");
+      sec.id = "result";
+      form.after(sec);
+      return sec;
+    })();
+
+    result.innerHTML = `
+      <article>
+        <h3>Generated JSON</h3>
+        <section aria-label="JSON output">
+          <pre><code id="json_code" class="language-json">${escapeHtml(jsonText)}</code></pre>
+        </section>
+        <div style="margin-top:.75rem;">
+          <button id="start_over_btn" type="button">Start Over</button>
+        </div>
+      </article>
+    `;
+
+    // Change H2 as required
+    const h2 = document.querySelector("h2");
     if (h2) h2.textContent = "Introduction HTML";
 
-    // Build the highlighted code block
-    jsonSection.innerHTML = "";
-    const title = document.createElement("h3");
-    title.textContent = "Generated JSON";
-    const pre = document.createElement("pre");
-    const code = document.createElement("code");
-    code.className = "language-json";
-    code.textContent = jsonStr;
-    pre.appendChild(code);
-    jsonSection.appendChild(title);
-    jsonSection.appendChild(pre);
-    jsonSection.hidden = false;
+    // Hide form, show result
+    form.hidden = true;
+    result.hidden = false;
 
     // Highlight
     if (window.hljs) {
-      window.hljs.highlightElement(code);
+      const code = $("#json_code");
+      hljs.highlightElement(code);
     }
+
+    // Start over (restores form & title)
+    $("#start_over_btn")?.addEventListener("click", () => {
+      result.hidden = true;
+      form.hidden = false;
+      form.reset();
+      // remove extra course entries beyond the first
+      $$(".course-entry").slice(1).forEach(d => d.remove());
+      const h2b = document.querySelector("h2");
+      if (h2b) h2b.textContent = "Introduction Form";
+    });
   }
 
-  btn.addEventListener("click", () => {
-    const json = buildJsonString();
-    renderJson(json);
+  document.addEventListener("DOMContentLoaded", () => {
+    // Bind to your actual button id:
+    $("#btn-generate-json")?.addEventListener("click", (e) => {
+      e.preventDefault();
+      renderJSON();
+    });
   });
-});
+})();
