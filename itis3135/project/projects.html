@@ -4,19 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects | Student Tech Portfolio</title>
+
+  <!-- Site styles -->
   <link rel="stylesheet" href="styles/main.css" />
-  <!-- jQuery + jQuery UI (for Tabs/Accordion) -->
+
+  <!-- jQuery + jQuery UI (for future widgets if needed) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
   <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" defer></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css" />
+
+  <!-- Site scripts -->
   <script src="scripts/main.js" defer></script>
+  <script src="scripts/projects.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Student Tech Portfolio</h1>
-    <nav aria-label="Primary">
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
+      <a href="projects.html" aria-current="page">Projects</a>
       <a href="about.html">About</a>
       <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
@@ -25,7 +31,27 @@
 
   <main id="main">
     <h2>Featured Projects</h2>
-    <p>Explore a selection of development and design projects highlighting technical and creative skills.</p>
+    <p>Browse projects by keyword or tech.</p>
+
+    <form id="project-filters" role="search" aria-label="Filter projects">
+      <label for="q" class="sr-only">Search projects</label>
+      <input id="q" name="q" type="search" placeholder="Search by title or description" />
+
+      <label for="tech" class="sr-only">Filter by tech</label>
+      <select id="tech" name="tech">
+        <option value="">All tech</option>
+        <option value="HTML/CSS">HTML/CSS</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="jQuery UI">jQuery UI</option>
+        <option value="JSON/AJAX">JSON/AJAX</option>
+      </select>
+
+      <button type="reset" id="clearFilters">Clear</button>
+    </form>
+
+    <p id="resultCount" aria-live="polite">Loading projects…</p>
+
+    <section id="projectsGrid" class="card-grid" aria-label="Project results"></section>
   </main>
 
   <footer>
