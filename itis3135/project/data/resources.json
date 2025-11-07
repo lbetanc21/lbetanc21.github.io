@@ -1,0 +1,22 @@
+[
+  {
+    "title": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/",
+    "desc": "Comprehensive HTML, CSS, and JavaScript reference by Mozilla."
+  },
+  {
+    "title": "W3Schools",
+    "url": "https://www.w3schools.com/",
+    "desc": "Beginner-friendly tutorials and examples for web technologies."
+  },
+  {
+    "title": "jQuery UI Tabs",
+    "url": "https://jqueryui.com/tabs/",
+    "desc": "Official documentation for implementing Tabs and other UI widgets."
+  },
+  {
+    "title": "FreeCodeCamp",
+    "url": "https://www.freecodecamp.org/",
+    "desc": "Interactive coding lessons and certification paths for web development."
+  }
+]

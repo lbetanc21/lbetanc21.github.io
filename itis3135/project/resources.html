@@ -4,28 +4,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Resources | Student Tech Portfolio</title>
+
   <link rel="stylesheet" href="styles/main.css" />
-  <!-- jQuery + jQuery UI (for Tabs/Accordion) -->
+
+  <!-- jQuery + UI (optional, for consistency) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
   <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" defer></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css" />
+
   <script src="scripts/main.js" defer></script>
+  <script src="scripts/resources.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Student Tech Portfolio</h1>
-    <nav aria-label="Primary">
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
       <a href="about.html">About</a>
-      <a href="resources.html">Resources</a>
+      <a href="resources.html" aria-current="page">Resources</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main id="main">
     <h2>Learning Resources</h2>
-    <p>A curated list of programming tutorials, documentation, and design tools.</p>
+    <p>
+      Below are some helpful tutorials and references loaded dynamically from a local JSON file.
+      This demonstrates <strong>AJAX (read-only)</strong> integration.
+    </p>
+
+    <div id="resources-region" aria-live="polite">Loading resources…</div>
   </main>
 
   <footer>

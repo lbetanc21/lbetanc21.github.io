@@ -68,6 +68,19 @@ nav a[aria-current="page"] { text-decoration: underline; }
 .skills { margin-top: 1.25rem; }
 .checklist li { margin: .25rem 0; }
 
+/* ====== RESOURCES PAGE ====== */
+.resource-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin: .75rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.resource-card h3 { margin-top: 0; }
+.resource-card a { text-decoration: none; font-weight: 600; color: #0077b6; }
+.resource-card a:hover { text-decoration: underline; }
+
 /* Make jQuery UI Tabs look a bit cleaner with your theme */
 #skills-tabs { margin-top: .5rem; }
 #skills-tabs .ui-tabs-nav {
