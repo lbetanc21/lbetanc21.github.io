@@ -1,187 +1,174 @@
-// scripts/generate_html.js
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btn-generate-html");
-  const form = document.getElementById("form");
-  const result = document.getElementById("result");
-  const jsonSection = document.getElementById("json_section");
-  const htmlSection = document.getElementById("html_section");
-  const h2 = document.querySelector("main h2");
+// generate_html.js — builds an HTML snippet from the form and displays it as highlighted code
+(function () {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const val = (id) => (document.getElementById(id)?.value || "").trim();
 
-  if (!btn) return;
+  const escapeHtml = (s) =>
+    s.replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 
-  const get = (id) => document.getElementById(id)?.value.trim() || "";
+  function buildCoursesHTML() {
+    const items = $$(".course-entry").map((e) => {
+      const d = e.querySelector("[id^='course_dept_']")?.value.trim() || "";
+      const n = e.querySelector("[id^='course_num_']")?.value.trim() || "";
+      const nm = e.querySelector("[id^='course_name_']")?.value.trim() || "";
+      const r = e.querySelector("[id^='course_reason_']")?.value.trim() || "";
+      if (!(d || n || nm || r)) return "";
+      return `    <li><strong>${d} ${n} - ${nm}:</strong> ${r}</li>`;
+    }).filter(Boolean);
 
-  function resolveImagePath() {
-    const fileInput = document.getElementById("profile_pic");
-    const def = document.getElementById("default_image");
-    if (fileInput && fileInput.files && fileInput.files.length > 0) {
-      // Use the chosen file's name under images/
-      return `images/${fileInput.files[0].name}`;
-    }
-    return def ? def.value : "";
+    return items.length
+      ? `<ul>\n${items.join("\n")}\n</ul>`
+      : `<ul>\n    <li>No courses listed.</li>\n</ul>`;
   }
 
-  function collectCourses() {
-    const rows = Array.from(document.querySelectorAll(".course-entry"));
-    return rows.map(row => {
-      const dept = row.querySelector("[id^='course_dept_']")?.value?.trim() || "";
-      const num  = row.querySelector("[id^='course_num_']")?.value?.trim() || "";
-      const name = row.querySelector("[id^='course_name_']")?.value?.trim() || "";
-      const reason = row.querySelector("[id^='course_reason_']")?.value?.trim() || "";
-      return { department: dept, number: num, name, reason };
-    });
+  function buildLinksHTML() {
+    const urls = ["link1","link2","link3","link4","link5"].map(val).filter(Boolean);
+    if (urls.length === 0) return `<ul>\n    <li>No links provided.</li>\n</ul>`;
+    return `<ul>\n${urls.map(u => `    <li><a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("\n")}\n</ul>`;
   }
 
-  function collectLinks() {
-    const ids = ["link1","link2","link3","link4","link5"];
-    return ids
-      .map(id => get(id))
-      .filter(href => href && href.length > 0);
-  }
+  function buildIntroHTMLLiteral() {
+    const first = val("first_name");
+    const mid = val("middle_name");
+    const pref = val("preferred_name");
+    const last = val("last_name");
 
-  // Build the HTML string (this is what will appear as code in the <code> block)
-  function buildHtmlString() {
-    const first = get("first_name");
-    const middle = get("middle_name");
-    const preferred = get("preferred_name");
-    const last = get("last_name");
+    const adj = val("mascot_adj");
+    const animal = val("mascot_animal");
+    const divider = val("mascot_divider") || "•";
 
-    const adj = get("mascot_adj");
-    const divider = get("mascot_divider");
-    const animal = get("mascot_animal");
+    // Use a real path string for the code output (not a blob)
+    const imgSrc = val("default_image") || "images/default-profile.jpg";
+    const imgCap = val("img_caption");
 
-    const imgSrc = resolveImagePath();
-    const imgCap = get("img_caption");
+    const personal = val("personal_statement");
+    const bullets = [1,2,3,4,5,6,7].map(i => val("bullet"+i));
+    const quote = val("quote_text");
+    const quoteAuth = val("quote_author");
 
-    const personalStatement = get("personal_statement");
+    const ackStatement = val("ack_statement");
+    const ackDate = val("ack_date");
 
-    const bullets = [
-      get("bullet1"), // Personal
-      get("bullet2"), // Academic
-      get("bullet3"), // Professional
-      get("bullet4"), // Skills
-      get("bullet5"), // Interests
-      get("bullet6"), // Goals
-      get("bullet7")  // Fun
-    ];
+    const nameLineParts = [
+      first,
+      mid ? `${mid.charAt(0)}.` : null,
+      last,
+      pref ? `"${pref}"` : null
+    ].filter(Boolean);
 
-    const quote = get("quote_text");
-    const quoteAuthor = get("quote_author");
+    const nameLine = nameLineParts.join(" ");
 
-    const funny = get("funny_thing");
-    const share = get("share_thing");
-
-    const courses = collectCourses();
-    const links = collectLinks();
-
-    const fullName = `${first}${middle ? " " + middle : ""} ${last}`;
-    const displayName =
-      preferred && preferred.trim().length > 0
-        ? `${fullName} (${preferred})`
-        : fullName;
-
-    // Build lists
-    const detailsList = `
-<ul>
-  <li><strong>Personal Background:</strong> ${bullets[0] || ""}</li>
-  <li><strong>Academic Background:</strong> ${bullets[1] || ""}</li>
-  <li><strong>Professional Background:</strong> ${bullets[2] || ""}</li>
-  <li><strong>Skills &amp; Strengths:</strong> ${bullets[3] || ""}</li>
-  <li><strong>Interests &amp; Hobbies:</strong> ${bullets[4] || ""}</li>
-  <li><strong>Goals &amp; Ambitions:</strong> ${bullets[5] || ""}</li>
-  <li><strong>Fun Fact:</strong> ${bullets[6] || ""}</li>
-</ul>`.trim();
-
-    const coursesList = `
-<ul>
-  ${courses
-    .map(c => `<li><strong>${c.department} ${c.number} - ${c.name}:</strong> ${c.reason}</li>`)
-    .join("\n  ")}
-</ul>`.trim();
-
-    const linksList = `
-<ul>
-  ${links.map(href => `<li><a href="${href}" target="_blank" rel="noopener">${href}</a></li>`).join("\n  ")}
-</ul>`.trim();
-
-    // The full HTML literal we want to DISPLAY (not render)
-    const htmlLiteral = `
+    // Build literal HTML (this is what we will DISPLAY as code)
+    const literal = `\
 <h2>Introduction HTML</h2>
-<h3>${displayName} ★ ${adj} ${divider} ${animal}</h3>
+<h3>${nameLine} ★ ${adj} ${divider} ${animal}</h3>
 <figure>
-  <img src="${imgSrc}" alt="Headshot of ${first} ${last}" />
+  <img
+    src="${imgSrc}"
+    alt="Profile image of ${first} ${last}"
+  />
   <figcaption>${imgCap}</figcaption>
 </figure>
 
 <section>
-  <h3>About Me</h3>
-  <p>${personalStatement}</p>
+  <h3>Personal Statement</h3>
+  <p>${personal}</p>
 </section>
 
 <section>
   <h3>Details</h3>
-  ${detailsList}
+  <ul>
+    <li><strong>Personal Background:</strong> ${bullets[0] || ""}</li>
+    <li><strong>Academic Background:</strong> ${bullets[1] || ""}</li>
+    <li><strong>Professional Background:</strong> ${bullets[2] || ""}</li>
+    <li><strong>Skills &amp; Strengths:</strong> ${bullets[3] || ""}</li>
+    <li><strong>Interests &amp; Hobbies:</strong> ${bullets[4] || ""}</li>
+    <li><strong>Goals &amp; Ambitions:</strong> ${bullets[5] || ""}</li>
+    <li><strong>Fun Fact:</strong> ${bullets[6] || ""}</li>
+  </ul>
 </section>
 
 <section>
   <h3>Courses I'm Taking</h3>
-  ${coursesList}
+  ${buildCoursesHTML()}
 </section>
 
 <section>
-  <h3>Quote</h3>
-  <blockquote>“${quote}”</blockquote>
-  <p>- ${quoteAuthor}</p>
-</section>
-
-<section>
-  <h3>Extras</h3>
-  ${funny ? `<p><strong>Funny thing:</strong> ${funny}</p>` : ``}
-  ${share ? `<p><strong>Something I'd like to share:</strong> ${share}</p>` : ``}
+  <h3>Favorite Quote</h3>
+  <blockquote>&ldquo;${quote}&rdquo;</blockquote>
+  <p>&mdash; ${quoteAuth}</p>
 </section>
 
 <section>
   <h3>Links</h3>
-  ${linksList}
+  ${buildLinksHTML()}
 </section>
-`.trim();
 
-    return htmlLiteral;
+<section>
+  <h3>Acknowledgment</h3>
+  <p><strong>Statement:</strong> ${ackStatement}</p>
+  <p><strong>Date:</strong> ${ackDate}</p>
+</section>`;
+
+    return literal;
   }
 
-  function renderHtmlAsCode(htmlString) {
-    // Hide other views
-    if (form) form.hidden = true;
-    if (result) result.hidden = true;
-    if (jsonSection) jsonSection.hidden = true;
+  function renderHTMLCodeBlock() {
+    const form = $("#form");
+    const result = $("#result") || (function(){
+      const sec = document.createElement("section");
+      sec.id = "result";
+      form.after(sec);
+      return sec;
+    })();
 
-    // Update H2 per assignment
+    const htmlLiteral = buildIntroHTMLLiteral();
+
+    result.innerHTML = `
+      <article>
+        <h3>Generated HTML</h3>
+        <section aria-label="HTML output">
+          <pre><code id="html_code" class="language-html">${escapeHtml(htmlLiteral)}</code></pre>
+        </section>
+        <div style="margin-top:.75rem;">
+          <button id="start_over_btn" type="button">Start Over</button>
+        </div>
+      </article>
+    `;
+
+    // Change H2 per instructions
+    const h2 = document.querySelector("h2");
     if (h2) h2.textContent = "Introduction HTML";
 
-    // Build <pre><code class="language-html">…</code></pre>
-    htmlSection.innerHTML = "";
-    const title = document.createElement("h3");
-    title.textContent = "Generated HTML (copyable)";
-    const pre = document.createElement("pre");
-    const code = document.createElement("code");
-    code.className = "language-html";
+    // Replace the form
+    form.hidden = true;
+    result.hidden = false;
 
-    // IMPORTANT: Use textContent to show tags as text (not render them)
-    code.textContent = buildHtmlString();
-
-    pre.appendChild(code);
-    htmlSection.appendChild(title);
-    htmlSection.appendChild(pre);
-    htmlSection.hidden = false;
-
-    // Highlight
+    // Syntax highlight
     if (window.hljs) {
-      window.hljs.highlightElement(code);
+      const code = $("#html_code");
+      hljs.highlightElement(code);
     }
+
+    // Start over → restore form
+    $("#start_over_btn")?.addEventListener("click", () => {
+      result.hidden = true;
+      form.hidden = false;
+      form.reset();
+      // Remove dynamically added course blocks beyond the first
+      const entries = $$(".course-entry");
+      entries.slice(1).forEach((d) => d.remove());
+      const h2b = document.querySelector("h2");
+      if (h2b) h2b.textContent = "Introduction Form";
+    });
   }
 
-  btn.addEventListener("click", () => {
-    const htmlStr = buildHtmlString();
-    renderHtmlAsCode(htmlStr);
+  document.addEventListener("DOMContentLoaded", () => {
+    // Your HTML button uses id="btn-generate-html"
+    $("#btn-generate-html")?.addEventListener("click", (e) => {
+      e.preventDefault();
+      renderHTMLCodeBlock();
+    });
   });
-});
+})();
