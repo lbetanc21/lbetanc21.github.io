@@ -4,20 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About | Student Tech Portfolio</title>
+
+  <!-- Site styles -->
   <link rel="stylesheet" href="styles/main.css" />
-  <!-- jQuery + jQuery UI (for Tabs/Accordion) -->
+
+  <!-- jQuery + jQuery UI (Tabs) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
   <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" defer></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css" />
+
+  <!-- Site scripts -->
   <script src="scripts/main.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Student Tech Portfolio</h1>
-    <nav aria-label="Primary">
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
+      <a href="about.html" aria-current="page">About</a>
       <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -25,7 +30,75 @@
 
   <main id="main">
     <h2>About the Developer</h2>
-    <p>Learn more about Luis Betancourt — background, education, and professional goals.</p>
+    <section class="about-hero">
+      <img class="headshot" src="images/headshot-placeholder.jpg" alt="Headshot of Luis Betancourt" />
+      <div>
+        <p>
+          Hi, I’m <strong>Luis Betancourt</strong> — a Computer Science student at UNC Charlotte focused on
+          building clean, accessible, and practical web experiences. I enjoy front-end development,
+          UI patterns, and making small tools that feel great to use.
+        </p>
+        <p class="about-actions">
+          <a class="button" href="documents/Luis_Betancourt_Resume.pdf" target="_blank" rel="noopener">View Resume (PDF)</a>
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-title" class="skills">
+      <h3 id="skills-title">Skills</h3>
+
+      <!-- jQuery UI Tabs -->
+      <div id="skills-tabs">
+        <ul>
+          <li><a href="#tab-web">Web</a></li>
+          <li><a href="#tab-js">JavaScript</a></li>
+          <li><a href="#tab-tools">Tools</a></li>
+          <li><a href="#tab-soft">Soft Skills</a></li>
+        </ul>
+
+        <div id="tab-web">
+          <ul class="checklist">
+            <li>Semantic HTML, responsive CSS (Flex/Grid)</li>
+            <li>Accessibility basics (landmarks, labels, focus states)</li>
+            <li>Form patterns and client-side validation</li>
+          </ul>
+        </div>
+
+        <div id="tab-js">
+          <ul class="checklist">
+            <li>Vanilla JS (DOM, fetch, modules)</li>
+            <li>jQuery UI widgets (Tabs/Accordion) and patterns</li>
+            <li>JSON/AJAX (read-only), simple state management</li>
+          </ul>
+        </div>
+
+        <div id="tab-tools">
+          <ul class="checklist">
+            <li>VS Code, Git/GitHub, GitHub Pages</li>
+            <li>Draw.io for wireframes/sitemaps</li>
+            <li>Chrome DevTools (accessibility/Network)</li>
+          </ul>
+        </div>
+
+        <div id="tab-soft">
+          <ul class="checklist">
+            <li>Clear communication with stakeholders</li>
+            <li>Planning & iteration based on feedback</li>
+            <li>Documentation and clean commits</li>
+          </ul>
+        </div>
+      </div>
+      <!-- /#skills-tabs -->
+    </section>
+
+    <section class="about-extra">
+      <h3>Interests & Goals</h3>
+      <p>
+        I’m currently building a client-style portfolio site (this project) and focusing on patterns that
+        recruiters and collaborators find useful: project summaries, tech tags, and clear contact paths.
+        Short-term goal: land a technical internship where I can contribute UI features and docs.
+      </p>
+    </section>
   </main>
 
   <footer>
