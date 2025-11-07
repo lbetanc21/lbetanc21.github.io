@@ -81,6 +81,29 @@ nav a[aria-current="page"] { text-decoration: underline; }
 .resource-card a { text-decoration: none; font-weight: 600; color: #0077b6; }
 .resource-card a:hover { text-decoration: underline; }
 
+/* ====== CONTACT FORM ====== */
+form { max-width: 720px; }
+.form-row { margin: .75rem 0; display: grid; gap: .35rem; }
+.form-row label { font-weight: 600; }
+input[type="text"], input[type="email"], textarea {
+  width: 100%; padding: .6rem .7rem; border: 1px solid #e5e7eb; border-radius: .5rem;
+}
+input[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-color: #ef4444; outline-color: #ef4444;
+}
+.error { color: #b91c1c; min-height: 1.1em; margin: 0; }
+.help { color: #6b7280; font-size: .9rem; margin: .25rem 0 0; }
+.form-actions { display: flex; gap: .5rem; margin-top: .75rem; }
+button {
+  padding: .55rem .9rem; border: 1px solid #e5e7eb; background: #fff;
+  border-radius: .5rem; cursor: pointer; font-weight: 600;
+}
+button:hover { background: #f6f8fb; }
+.success {
+  margin-top: 1rem; padding: .75rem 1rem; background: #ecfdf5; border: 1px solid #a7f3d0;
+  color: #065f46; border-radius: .5rem;
+}
+
 /* Make jQuery UI Tabs look a bit cleaner with your theme */
 #skills-tabs { margin-top: .5rem; }
 #skills-tabs .ui-tabs-nav {
