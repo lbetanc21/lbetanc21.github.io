@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Overview | Student Tech Portfolio</title>
+
+  <!-- Update this to your class/homework CSS file if different -->
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <style>
+    /* Light polish if your class CSS is minimal */
+    main { max-width: 1100px; margin: 0 auto; padding: 1.25rem; }
+    h1, h2, h3 { color: #14213d; }
+    .meta { color:#6b7280; font-size: .95rem; }
+    figure { margin: 1rem 0; }
+    figcaption { font-size: .9rem; color:#4b5563; }
+    .grid { display:grid; gap:1rem; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:.6rem; padding:1rem; }
+    table { width:100%; border-collapse: collapse; margin-top:.5rem; }
+    th, td { border:1px solid #e5e7eb; padding:.6rem; text-align:left; vertical-align: top; }
+    th { background:#f8fafc; }
+    ul.tight > li { margin:.25rem 0; }
+    a { color:#0077b6; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    header, footer { text-align:center; padding:1rem 0; }
+    header { background:#f6f8fb; border-bottom:1px solid #e5e7eb; }
+    nav a { margin: 0 .5rem; font-weight:600; color:#14213d; }
+    footer { background:#fafafa; border-top:1px solid #e5e7eb; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ITIS 3135 — Project Overview</h1>
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="project_overview.html" aria-current="page">Project Overview</a>
+      <a href="itis3135/project/index.html">Project Site</a>
+      <a href="intro_form.html">Intro Form</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Student Tech Portfolio — Project Overview</h2>
+    <p class="meta">Client: <strong>Luis Betancourt</strong> · UNC Charlotte — CCI · Prepared: Nov 2, 2025</p>
+
+    <!-- 1) Project Overview -->
+    <section class="card" aria-labelledby="overview-title">
+      <h3 id="overview-title">Project Overview</h3>
+      <p>
+        A clean, modern portfolio site for a UNCC student that showcases skills, projects, resume, and contact info.
+        The goal is to support internship and job recruitment and demonstrate planning, design, and development of a small web application. :contentReference[oaicite:1]{index=1}
+      </p>
+      <div class="grid grid-2">
+        <div>
+          <h4>Purpose</h4>
+          <ul class="tight">
+            <li>Create a modern portfolio for a UNCC student</li>
+            <li>Showcase skills, projects, and resume</li>
+            <li>Provide contact path for recruiters/collaborators</li>
+            <li>Demonstrate web app planning/design/dev</li>
+          </ul>
+        </div>
+        <div>
+          <h4>What it will do</h4>
+          <ul class="tight">
+            <li>Display project cards and skill sections</li>
+            <li>Include an About page + downloadable resume</li>
+            <li>Provide a contact form (front-end only)</li>
+            <li>Load resources dynamically via JSON (AJAX)</li>
+            <li>Use one jQuery UI widget (tabs)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta">Primary users: recruiters/hiring managers, classmates & instructors, potential collaborators. :contentReference[oaicite:2]{index=2}</p>
+    </section>
+
+    <!-- 2) Client Information -->
+    <section class="card" aria-labelledby="client-title">
+      <h3 id="client-title">Client Information</h3>
+      <ul class="tight">
+        <li><strong>Name:</strong> Luis Betancourt</li>
+        <li><strong>Affiliation:</strong> UNC Charlotte — College of Computing & Informatics</li>
+        <li><strong>Email:</strong> [private]</li>
+        <li><strong>Phone:</strong> [private]</li>
+        <li><strong>Notes:</strong> Personal contact info protected per course instructions.</li>
+      </ul>
+      <p class="meta">Client is the student; project serves recruiting, coursework, and portfolio needs. :contentReference[oaicite:3]{index=3}</p>
+    </section>
+
+    <!-- 3) Wireframe (homepage layout) -->
+    <section class="card" aria-labelledby="wireframe-title">
+      <h3 id="wireframe-title">Wireframe (Homepage)</h3>
+      <figure>
+        <!-- Replace src with your actual path, e.g. project/images/wireframe-home.png -->
+        <img src="project/images/wireframe-home.png" alt="Homepage wireframe showing header, hero, project cards, and footer" style="max-width:100%;border:1px solid #e5e7eb;border-radius:.5rem;" />
+        <figcaption>
+          Draft layout created in Draw.io. 
+          <a href="PASTE_YOUR_DRAWIO_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener">View full wireframe</a>.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- 4) Sitemap -->
+    <section class="card" aria-labelledby="sitemap-title">
+      <h3 id="sitemap-title">Sitemap</h3>
+      <figure>
+        <!-- Replace src with your actual path, e.g. project/images/sitemap.png -->
+        <img src="project/images/sitemap.png" alt="Sitemap diagram for five-page portfolio site" style="max-width:100%;border:1px solid #e5e7eb;border-radius:.5rem;" />
+        <figcaption>
+          Site structure created in Draw.io.
+          <a href="PASTE_YOUR_DRAWIO_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener">View full sitemap</a>.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- 5) Page-by-Page Design -->
+    <section class="card" aria-labelledby="pages-title">
+      <h3 id="pages-title">Page Design: Names, Purpose, Content & Interactivity</h3>
+      <table aria-describedby="pages-desc">
+        <caption id="pages-desc" class="sr-only">Design details per page</caption>
+        <thead>
+          <tr>
+            <th>Page (File)</th>
+            <th>Purpose & Audience</th>
+            <th>Content</th>
+            <th>Interactivity / Validation</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Home</strong> (<code>index.html</code>)</td>
+            <td>Introduce student; featured work (General, recruiters)</td>
+            <td>Intro statement, hero, project previews</td>
+            <td>Buttons/links to other pages</td>
+            <td>Branding + quick scan</td>
+          </tr>
+          <tr>
+            <td><strong>Projects</strong> (<code>projects.html</code>)</td>
+            <td>Show coursework/personal projects (Recruiters, peers)</td>
+            <td>Card grid (title, description, tech)</td>
+            <td>Search + filter dropdown; open project links</td>
+            <td>Client-side filtering only</td>
+          </tr>
+          <tr>
+            <td><strong>About</strong> (<code>about.html</code>)</td>
+            <td>Background & resume (Recruiters, instructors)</td>
+            <td>Bio, skills, headshot, resume link</td>
+            <td>jQuery UI Tabs for skills</td>
+            <td>Accessible tab labels</td>
+          </tr>
+          <tr>
+            <td><strong>Resources</strong> (<code>resources.html</code>)</td>
+            <td>Helpful CS links (Students/peers)</td>
+            <td>Cards populated from JSON file</td>
+            <td>AJAX fetch (read-only); no storage</td>
+            <td>Handles load errors gracefully</td>
+          </tr>
+          <tr>
+            <td><strong>Contact</strong> (<code>contact.html</code>)</td>
+            <td>Reach out for collab/recruiting</td>
+            <td>Form: name, email, subject, message</td>
+            <td>Front-end validation + success notice</td>
+            <td>No database; no persistence</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="meta">Pages and features as planned in the brief. :contentReference[oaicite:4]{index=4}</p>
+    </section>
+
+    <!-- 6) Dynamic Functionality Plan -->
+    <section class="card" aria-labelledby="dynamic-title">
+      <h3 id="dynamic-title">Dynamic Functionality</h3>
+      <ul class="tight">
+        <li><strong>jQuery UI Tabs</strong> on <em>About</em> for organizing skill sets (accessible).</li>
+        <li><strong>AJAX (fetch JSON)</strong> on <em>Resources</em> to render link cards (read-only, no DB).</li>
+        <li><strong>Client-side filtering</strong> on <em>Projects</em> (search + tech dropdown).</li>
+        <li><strong>Client-side validation</strong> on <em>Contact</em> (no submission/storage).</li>
+      </ul>
+      <p class="meta">All features are read-only per course constraints and align with the proposal. :contentReference[oaicite:5]{index=5}</p>
+    </section>
+
+    <!-- 7) Notes & References -->
+    <section class="card" aria-labelledby="notes-title">
+      <h3 id="notes-title">Notes & References</h3>
+      <ul class="tight">
+        <li>Prepared by: Luis Betancourt — Nov 2, 2025</li>
+        <li>Draw.io used for wireframe and sitemap (links above)</li>
+        <li>Front-end only (no CRUD); hosted via GitHub Pages and/or Charlotte server</li>
+        <li>Accessibility considerations: semantic landmarks, labels, focus states</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="https://validator.w3.org/nu/" target="_blank" rel="noopener">HTML Validator</a> ·
+      <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">CSS Validator</a>
+    </p>
+    <p>&copy; 2025 Student Tech Portfolio | Luis Betancourt</p>
+  </footer>
+</body>
+</html>
